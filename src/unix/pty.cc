@@ -290,8 +290,6 @@ PtyResize(const Arguments& args) {
   struct winsize winp;
   winp.ws_col = args[1]->IntegerValue();
   winp.ws_row = args[2]->IntegerValue();
-  winp.ws_xpixel = 0;
-  winp.ws_ypixel = 0;
 
   if (ioctl(fd, TIOCSWINSZ, &winp) == -1) {
     return ThrowException(Exception::Error(
